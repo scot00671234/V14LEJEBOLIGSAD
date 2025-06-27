@@ -74,7 +74,19 @@ export default function PropertyDetail() {
 
   const sendMessageMutation = useMutation({
     mutationFn: async (messageData: { recipientId: number; message: string; propertyId: number }) => {
-      return apiRequest('POST', '/api/messages', messageData);
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          toUserId: messageData.recipientId,
+          content: messageData.message,
+          propertyId: messageData.propertyId,
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to send message');
+      return response.json();
     },
     onSuccess: () => {
       toast({
