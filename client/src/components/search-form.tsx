@@ -31,32 +31,32 @@ export default function SearchForm({ onSearch, className = "" }: SearchFormProps
   };
 
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-2xl ${className}`}>
+    <div className={`bg-white rounded-2xl p-8 shadow-xl border border-gray-100 ${className}`}>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="relative">
-            <Label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+            <Label htmlFor="location" className="block text-sm font-medium text-gray-900 mb-3">
               Hvor?
             </Label>
             <div className="relative">
-              <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+              <MapPin className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
                 id="location"
                 type="text"
                 placeholder="By, område eller postnummer"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="pl-10"
+                className="pl-12 h-12 border-gray-200 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
           </div>
           
           <div>
-            <Label htmlFor="rooms" className="block text-sm font-medium text-gray-700 mb-2">
+            <Label htmlFor="rooms" className="block text-sm font-medium text-gray-900 mb-3">
               Værelser
             </Label>
             <Select value={rooms} onValueChange={setRooms}>
-              <SelectTrigger>
+              <SelectTrigger className="h-12 border-gray-200 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Alle" />
               </SelectTrigger>
               <SelectContent>
@@ -70,11 +70,11 @@ export default function SearchForm({ onSearch, className = "" }: SearchFormProps
           </div>
           
           <div>
-            <Label htmlFor="maxPrice" className="block text-sm font-medium text-gray-700 mb-2">
+            <Label htmlFor="maxPrice" className="block text-sm font-medium text-gray-900 mb-3">
               Max pris
             </Label>
             <Select value={maxPrice} onValueChange={setMaxPrice}>
-              <SelectTrigger>
+              <SelectTrigger className="h-12 border-gray-200 focus:border-blue-500 focus:ring-blue-500">
                 <SelectValue placeholder="Ingen grænse" />
               </SelectTrigger>
               <SelectContent>
@@ -91,7 +91,7 @@ export default function SearchForm({ onSearch, className = "" }: SearchFormProps
           <div className="flex items-end">
             <Button 
               type="submit"
-              className="w-full bg-danish-blue text-white hover:bg-blue-700 font-medium"
+              className="w-full h-12 bg-blue-600 text-white hover:bg-blue-700 font-medium shadow-sm"
             >
               <Search className="h-4 w-4 mr-2" />
               Søg boliger

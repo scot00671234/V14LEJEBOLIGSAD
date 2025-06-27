@@ -205,20 +205,21 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Udlejer Dashboard</h1>
-        <p className="text-gray-600">Administrer dine boligannoncer</p>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-6 py-12">
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Udlejer Dashboard</h1>
+          <p className="text-lg text-gray-600">Administrer dine boligannoncer</p>
+        </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="properties">Mine boliger</TabsTrigger>
-          <TabsTrigger value="create">Opret ny bolig</TabsTrigger>
-          <TabsTrigger value="messages">
-            <MessageCircle className="h-4 w-4 mr-2" />
-            Beskeder
-          </TabsTrigger>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
+          <TabsList className="bg-white border border-gray-200 shadow-sm">
+            <TabsTrigger value="properties" className="font-medium">Mine boliger</TabsTrigger>
+            <TabsTrigger value="create" className="font-medium">Opret ny bolig</TabsTrigger>
+            <TabsTrigger value="messages" className="font-medium">
+              <MessageCircle className="h-4 w-4 mr-2" />
+              Beskeder
+            </TabsTrigger>
         </TabsList>
 
         <TabsContent value="properties">
@@ -482,6 +483,7 @@ export default function Dashboard() {
           </Card>
         </TabsContent>
       </Tabs>
+      </div>
     </div>
   );
 }

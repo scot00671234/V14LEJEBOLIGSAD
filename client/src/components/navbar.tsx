@@ -20,19 +20,22 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+    <nav className="glass sticky top-0 z-50 border-b border-gray-200/30">
+      <div className="container mx-auto px-6">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-8">
-            <Link href="/" className="flex items-center space-x-2">
-              <Home className="text-danish-blue h-8 w-8" />
-              <span className="text-xl font-bold text-gray-900">Lejebolig Nu</span>
+          <div className="flex items-center space-x-12">
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                <Home className="text-white h-4 w-4" />
+              </div>
+              <span className="text-lg font-semibold text-gray-900 tracking-tight">Lejebolig Nu</span>
             </Link>
-            <div className="hidden md:flex space-x-6">
+            
+            <div className="hidden md:flex items-center space-x-8">
               <Link 
                 href="/properties" 
-                className={`transition-colors hover:text-danish-blue ${
-                  location === '/properties' ? 'text-danish-blue' : 'text-gray-700'
+                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                  location === '/properties' ? 'text-blue-600' : 'text-gray-600'
                 }`}
               >
                 Boliger
@@ -40,8 +43,8 @@ export default function Navbar() {
               {isAuthenticated && user?.role === 'tenant' && (
                 <Link 
                   href="/favorites" 
-                  className={`transition-colors hover:text-danish-blue ${
-                    location === '/favorites' ? 'text-danish-blue' : 'text-gray-700'
+                  className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                    location === '/favorites' ? 'text-blue-600' : 'text-gray-600'
                   }`}
                 >
                   Favoritter
@@ -50,32 +53,32 @@ export default function Navbar() {
             </div>
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {!isAuthenticated ? (
               <div className="hidden md:flex items-center space-x-3">
                 <Link href="/login">
-                  <Button variant="ghost" className="text-gray-700 hover:text-danish-blue">
+                  <Button variant="ghost" className="text-gray-600 hover:text-gray-900 font-medium">
                     Log ind
                   </Button>
                 </Link>
                 <Link href="/register">
-                  <Button className="bg-danish-blue text-white hover:bg-blue-700">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-sm">
                     Opret konto
                   </Button>
                 </Link>
               </div>
             ) : (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
                 <Link href="/messages">
-                  <Button variant="ghost" size="sm">
-                    <MessageCircle className="h-5 w-5" />
+                  <Button variant="ghost" size="sm" className="hover:bg-gray-100">
+                    <MessageCircle className="h-4 w-4" />
                   </Button>
                 </Link>
                 
                 {user?.role === 'landlord' && (
-                  <Link href="/dashboard/create-property">
-                    <Button size="sm" className="bg-danish-blue text-white hover:bg-blue-700">
-                      <Plus className="h-4 w-4 mr-1" />
+                  <Link href="/dashboard">
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white font-medium shadow-sm">
+                      <Plus className="h-4 w-4 mr-2" />
                       Opret annonce
                     </Button>
                   </Link>
@@ -83,39 +86,39 @@ export default function Navbar() {
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="flex items-center space-x-2">
-                      <Avatar className="h-8 w-8">
-                        <AvatarFallback className="bg-danish-blue text-white text-sm">
+                    <Button variant="ghost" className="flex items-center space-x-2 hover:bg-gray-100">
+                      <Avatar className="h-7 w-7">
+                        <AvatarFallback className="bg-blue-600 text-white text-xs font-medium">
                           {getInitials(user?.name || '')}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="hidden md:block">{user?.name}</span>
+                      <span className="hidden md:block text-sm font-medium text-gray-700">{user?.name}</span>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
+                  <DropdownMenuContent align="end" className="w-56">
                     <DropdownMenuItem asChild>
                       <Link href="/profile" className="flex items-center cursor-pointer">
-                        <User className="h-4 w-4 mr-2" />
+                        <User className="h-4 w-4 mr-3" />
                         Min profil
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href="/dashboard" className="flex items-center cursor-pointer">
-                        <Home className="h-4 w-4 mr-2" />
+                        <Home className="h-4 w-4 mr-3" />
                         Dashboard
                       </Link>
                     </DropdownMenuItem>
                     {user?.role === 'tenant' && (
                       <DropdownMenuItem asChild>
                         <Link href="/favorites" className="flex items-center cursor-pointer">
-                          <Heart className="h-4 w-4 mr-2" />
+                          <Heart className="h-4 w-4 mr-3" />
                           Favoritter
                         </Link>
                       </DropdownMenuItem>
                     )}
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={logout} className="text-red-600 cursor-pointer">
-                      <LogOut className="h-4 w-4 mr-2" />
+                      <LogOut className="h-4 w-4 mr-3" />
                       Log ud
                     </DropdownMenuItem>
                   </DropdownMenuContent>

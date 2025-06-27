@@ -75,8 +75,8 @@ export default function Properties() {
   };
 
   const displayProperties = isFavoritesPage 
-    ? favorites?.map((f: any) => f.property) || []
-    : properties || [];
+    ? (favorites?.map((f: any) => f.property) || [])
+    : (properties || []);
 
   const isLoading = isFavoritesPage ? favoritesLoading : propertiesLoading;
 
@@ -97,38 +97,39 @@ export default function Properties() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          {isFavoritesPage ? 'Mine favoritter' : 'Find din næste bolig'}
-        </h1>
-        
-        {!isFavoritesPage && (
-          <SearchForm onSearch={handleSearch} />
-        )}
-      </div>
-
-      {isLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[...Array(6)].map((_, i) => (
-            <Card key={i} className="animate-pulse">
-              <div className="h-48 bg-gray-200"></div>
-              <CardContent className="p-6">
-                <div className="h-4 bg-gray-200 rounded mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded w-2/3 mb-4"></div>
-                <div className="flex space-x-4 mb-4">
-                  <div className="h-3 bg-gray-200 rounded w-16"></div>
-                  <div className="h-3 bg-gray-200 rounded w-16"></div>
-                  <div className="h-3 bg-gray-200 rounded w-16"></div>
-                </div>
-                <div className="h-10 bg-gray-200 rounded"></div>
-              </CardContent>
-            </Card>
-          ))}
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-6 py-12">
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+            {isFavoritesPage ? 'Mine favoritter' : 'Find din næste bolig'}
+          </h1>
+          
+          {!isFavoritesPage && (
+            <div className="max-w-4xl">
+              <SearchForm onSearch={handleSearch} />
+            </div>
+          )}
         </div>
-      ) : displayProperties.length === 0 ? (
-        <Card className="max-w-2xl mx-auto">
-          <CardContent className="pt-6 text-center">
+
+        {isLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="surface animate-pulse">
+                <div className="h-48 bg-gray-200 rounded-t-lg"></div>
+                <div className="p-6">
+                  <div className="h-4 bg-gray-200 rounded mb-3"></div>
+                  <div className="h-4 bg-gray-200 rounded w-2/3 mb-4"></div>
+                  <div className="flex space-x-4 mb-4">
+                    <div className="h-3 bg-gray-200 rounded w-16"></div>
+                    <div className="h-3 bg-gray-200 rounded w-16"></div>
+                  </div>
+                  <div className="h-10 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : displayProperties.length === 0 ? (
+          <div className="surface max-w-2xl mx-auto p-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               {isFavoritesPage ? 'Ingen favoritter endnu' : 'Ingen boliger fundet'}
             </h2>
@@ -139,32 +140,32 @@ export default function Properties() {
               }
             </p>
             {!isFavoritesPage && (
-              <Button onClick={() => handleSearch({})}>
+              <Button onClick={() => handleSearch({})} className="bg-blue-600 hover:bg-blue-700">
                 Ryd alle filtre
               </Button>
             )}
-          </CardContent>
-        </Card>
-      ) : (
-        <>
-          <div className="mb-6">
-            <p className="text-gray-600">
-              {displayProperties.length} {displayProperties.length === 1 ? 'bolig' : 'boliger'} fundet
-            </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayProperties.map((property: Property) => (
-              <PropertyCard 
-                key={property.id} 
-                property={property}
-                isFavorite={isFavoritesPage}
-                onFavoriteChange={handleFavoriteChange}
-              />
-            ))}
-          </div>
-        </>
-      )}
+        ) : (
+          <>
+            <div className="mb-8">
+              <p className="text-gray-600 text-lg">
+                {displayProperties.length} {displayProperties.length === 1 ? 'bolig' : 'boliger'} fundet
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayProperties.map((property: Property) => (
+                <PropertyCard 
+                  key={property.id} 
+                  property={property}
+                  isFavorite={isFavoritesPage}
+                  onFavoriteChange={handleFavoriteChange}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

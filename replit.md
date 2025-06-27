@@ -104,6 +104,13 @@ The application uses a relational database with the following core entities:
 
 Changelog:
 - June 22, 2025. Initial setup
+- June 27, 2025. Implemented Apple/Palantir-inspired UI redesign:
+  - Updated global color palette with clean grays and minimal blue accents
+  - Enhanced typography with system fonts and improved spacing
+  - Redesigned navbar with glass effect and modern layout
+  - Transformed home page with minimalist hero section
+  - Updated search form and property cards with cleaner styling
+  - Applied consistent spacing and visual hierarchy throughout
 
 ## User Preferences
 

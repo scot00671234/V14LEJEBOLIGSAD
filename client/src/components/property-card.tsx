@@ -75,17 +75,17 @@ export default function PropertyCard({ property, isFavorite = false, onFavoriteC
   };
 
   return (
-    <Card className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+    <div className="surface-hover overflow-hidden group">
       <div className="relative">
-        <div className="h-48 bg-gray-200 flex items-center justify-center">
+        <div className="h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
           {property.images && property.images.length > 0 ? (
             <img 
               src={property.images[0]} 
               alt={property.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           ) : (
-            <div className="text-gray-400">Intet billede</div>
+            <div className="text-gray-400 text-sm">Intet billede</div>
           )}
         </div>
         
@@ -93,13 +93,13 @@ export default function PropertyCard({ property, isFavorite = false, onFavoriteC
           <Button
             variant="ghost"
             size="sm"
-            className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full p-0 shadow-md hover:bg-gray-100"
+            className="absolute top-3 right-3 w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full p-0 shadow-sm hover:bg-white"
             onClick={toggleFavorite}
             disabled={loading}
           >
             <Heart 
               className={`h-4 w-4 ${
-                favorite ? 'fill-red-500 text-red-500' : 'text-gray-400'
+                favorite ? 'fill-red-500 text-red-500' : 'text-gray-500'
               }`} 
             />
           </Button>
@@ -107,48 +107,48 @@ export default function PropertyCard({ property, isFavorite = false, onFavoriteC
         
         {property.createdAt && new Date().getTime() - new Date(property.createdAt).getTime() < 7 * 24 * 60 * 60 * 1000 && (
           <div className="absolute bottom-3 left-3">
-            <span className="bg-warm-amber text-white px-2 py-1 rounded text-sm font-medium">
+            <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
               Nyt
             </span>
           </div>
         )}
       </div>
       
-      <CardContent className="p-6">
-        <div className="flex justify-between items-start mb-2">
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-3">
           <h3 className="text-lg font-semibold text-gray-900 line-clamp-1">
             {property.title}
           </h3>
-          <span className="text-lg font-bold text-danish-blue whitespace-nowrap ml-2">
+          <span className="text-lg font-bold text-blue-600 whitespace-nowrap ml-2">
             {formatPrice(property.price)}
           </span>
         </div>
         
-        <p className="text-gray-600 mb-3 text-sm line-clamp-1">
+        <p className="text-gray-600 mb-4 text-sm line-clamp-1">
           {property.address}
         </p>
         
-        <div className="flex items-center space-x-4 text-sm text-gray-600 mb-4">
+        <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
           <span className="flex items-center">
-            <Bed className="h-4 w-4 mr-1" />
+            <Bed className="h-4 w-4 mr-1.5" />
             {property.rooms} {property.rooms === 1 ? 'værelse' : 'værelser'}
           </span>
           <span className="flex items-center">
-            <Maximize className="h-4 w-4 mr-1" />
+            <Maximize className="h-4 w-4 mr-1.5" />
             {property.size} m²
           </span>
           <span className="flex items-center">
-            <Calendar className="h-4 w-4 mr-1" />
+            <Calendar className="h-4 w-4 mr-1.5" />
             {formatDate(property.availableFrom)}
           </span>
         </div>
         
         <Link href={`/properties/${property.id}`}>
-          <Button className="w-full bg-danish-blue text-white hover:bg-blue-700">
+          <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 font-medium h-11">
             Se bolig
           </Button>
         </Link>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

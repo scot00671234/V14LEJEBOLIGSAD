@@ -85,13 +85,13 @@ export default function AuthModal({ isOpen, onClose, defaultMode = 'login' }: Au
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-md border-0 shadow-xl">
         <DialogHeader>
           <div className="flex justify-between items-center">
-            <DialogTitle className="text-2xl font-bold text-gray-900">
+            <DialogTitle className="text-2xl font-semibold text-gray-900 tracking-tight">
               {mode === 'login' ? 'Log ind' : 'Opret konto'}
             </DialogTitle>
-            <Button variant="ghost" size="sm" onClick={onClose}>
+            <Button variant="ghost" size="sm" onClick={onClose} className="hover:bg-gray-100">
               <X className="h-4 w-4" />
             </Button>
           </div>
