@@ -87,14 +87,9 @@ export default function AuthModal({ isOpen, onClose, defaultMode = 'login' }: Au
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md border-0 shadow-xl">
         <DialogHeader>
-          <div className="flex justify-between items-center">
-            <DialogTitle className="text-2xl font-semibold text-gray-900 tracking-tight">
-              {mode === 'login' ? 'Log ind' : 'Opret konto'}
-            </DialogTitle>
-            <Button variant="ghost" size="sm" onClick={onClose} className="hover:bg-gray-100">
-              <X className="h-4 w-4" />
-            </Button>
-          </div>
+          <DialogTitle className="text-2xl font-semibold text-gray-900 tracking-tight">
+            {mode === 'login' ? 'Log ind' : 'Opret konto'}
+          </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -177,9 +172,9 @@ export default function AuthModal({ isOpen, onClose, defaultMode = 'login' }: Au
               />
               <Label htmlFor="terms" className="text-sm text-gray-700">
                 Jeg accepterer{' '}
-                <a href="#" className="text-danish-blue hover:underline">vilkårene</a>
+                <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline">vilkårene</a>
                 {' '}og{' '}
-                <a href="#" className="text-danish-blue hover:underline">privatlivspolitikken</a>
+                <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline">privatlivspolitikken</a>
               </Label>
             </div>
           )}
@@ -187,14 +182,14 @@ export default function AuthModal({ isOpen, onClose, defaultMode = 'login' }: Au
           <Button 
             type="submit" 
             disabled={isLoading}
-            className="w-full bg-danish-blue text-white hover:bg-blue-700 font-medium"
+            className="w-full bg-blue-600 text-white hover:bg-blue-700 font-medium transition-colors"
           >
             {isLoading ? 'Behandler...' : (mode === 'login' ? 'Log ind' : 'Opret konto')}
           </Button>
 
           {mode === 'login' && (
             <div className="text-center">
-              <a href="#" className="text-danish-blue hover:underline text-sm">
+              <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline text-sm">
                 Glemt adgangskode?
               </a>
             </div>
@@ -208,7 +203,7 @@ export default function AuthModal({ isOpen, onClose, defaultMode = 'login' }: Au
           <Button 
             variant="link" 
             onClick={() => switchMode(mode === 'login' ? 'register' : 'login')}
-            className="text-danish-blue hover:underline font-medium"
+            className="text-blue-600 hover:text-blue-800 hover:underline font-medium"
           >
             {mode === 'login' ? 'Opret konto her' : 'Log ind her'}
           </Button>

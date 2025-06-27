@@ -95,64 +95,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Hvorfor vælge os?</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Vi gør det nemt og sikkert at finde eller udleje boliger</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Shield className="text-white h-7 w-7" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Sikker platform</h3>
-              <p className="text-gray-600 leading-relaxed">Alle udlejere verificeres, og din kommunikation er beskyttet gennem vores sikre beskedsystem.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Search className="text-white h-7 w-7" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Smart søgning</h3>
-              <p className="text-gray-600 leading-relaxed">Avancerede filtre og personlige anbefalinger hjælper dig med at finde præcis den bolig, du søger.</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <MessageCircle className="text-white h-7 w-7" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Direkte kontakt</h3>
-              <p className="text-gray-600 leading-relaxed">Kommuniker direkte med udlejere gennem vores indbyggede beskedsystem - hurtigt og nemt.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-blue-700">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">Klar til at finde din næste bolig?</h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">Opret en gratis konto og få adgang til tusindvis af lejemål</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-base font-medium"
-              onClick={() => openAuthModal('register')}
-            >
-              Opret konto som lejer
-            </Button>
-            <Button 
-              className="bg-blue-800 text-white hover:bg-blue-900 px-8 py-3 text-base font-medium border border-blue-500"
-              onClick={() => openAuthModal('register')}
-            >
-              Bliv udlejer
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
@@ -196,7 +138,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Lejebolig Nu. Alle rettigheder forbeholdes.</p>
+            <p>&copy; 2025 Lejebolig Nu. Alle rettigheder forbeholdes.</p>
           </div>
         </div>
       </footer>
