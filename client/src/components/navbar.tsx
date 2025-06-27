@@ -70,8 +70,14 @@ export default function Navbar() {
             ) : (
               <div className="flex items-center space-x-3">
                 <Link href="/messages">
-                  <Button variant="ghost" size="sm" className="hover:bg-gray-100">
+                  <Button variant="ghost" size="sm" className="hover:bg-gray-100" title="Beskeder">
                     <MessageCircle className="h-4 w-4" />
+                  </Button>
+                </Link>
+                
+                <Link href="/profile">
+                  <Button variant="ghost" size="sm" className="hover:bg-gray-100" title="Profil">
+                    <User className="h-4 w-4" />
                   </Button>
                 </Link>
                 

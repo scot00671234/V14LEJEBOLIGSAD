@@ -30,17 +30,18 @@ export default function PropertyMap({ property, className = "" }: PropertyMapPro
             
             // Create simple map with OpenStreetMap
             mapElement.innerHTML = `
-              <div class="w-full h-full bg-gray-100 rounded-lg flex flex-col">
-                <div class="p-4 bg-white rounded-t-lg border-b">
-                  <h4 class="font-semibold text-gray-900">Lokation</h4>
-                  <p class="text-sm text-gray-600">${property.address}</p>
-                  ${property.city ? `<p class="text-sm text-gray-600">${property.postalCode} ${property.city}</p>` : ''}
+              <div class="w-full h-full bg-white rounded-lg shadow-sm border flex flex-col">
+                <div class="p-6 bg-white rounded-t-lg border-b">
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">Lokation</h4>
+                  <p class="text-sm text-gray-600">${property.city || ''}</p>
+                  ${property.postalCode ? `<p class="text-sm text-gray-600">${property.postalCode} ${property.city || ''}</p>` : ''}
                 </div>
-                <div class="flex-1 relative">
+                <div class="flex-1 relative min-h-[300px]">
                   <iframe
                     src="https://www.openstreetmap.org/export/embed.html?bbox=${lon-0.01},${lat-0.01},${lon+0.01},${lat+0.01}&layer=mapnik&marker=${lat},${lon}"
-                    class="w-full h-full rounded-b-lg"
+                    class="w-full h-full rounded-b-lg border-0"
                     frameborder="0"
+                    style="border: none;"
                   ></iframe>
                 </div>
               </div>
@@ -48,17 +49,17 @@ export default function PropertyMap({ property, className = "" }: PropertyMapPro
           } else {
             // Fallback if coordinates not found
             mapElement.innerHTML = `
-              <div class="w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
-                <div class="text-center p-6">
-                  <div class="w-12 h-12 bg-danish-blue rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-full h-full bg-white rounded-lg shadow-sm border flex items-center justify-center min-h-[300px]">
+                <div class="text-center p-8">
+                  <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
                   </div>
-                  <h4 class="font-semibold text-gray-900 mb-1">Adresse</h4>
-                  <p class="text-sm text-gray-600">${property.address}</p>
-                  ${property.city ? `<p class="text-sm text-gray-600">${property.postalCode} ${property.city}</p>` : ''}
+                  <h4 class="text-lg font-semibold text-gray-900 mb-2">Lokation</h4>
+                  <p class="text-sm text-gray-600">${property.city || ''}</p>
+                  ${property.postalCode ? `<p class="text-sm text-gray-600">${property.postalCode} ${property.city || ''}</p>` : ''}
                 </div>
               </div>
             `;

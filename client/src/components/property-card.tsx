@@ -125,7 +125,7 @@ export default function PropertyCard({ property, isFavorite = false, onFavoriteC
         </div>
         
         <p className="text-gray-600 mb-4 text-sm line-clamp-1">
-          {property.address}
+          {property.city}, {property.postalCode}
         </p>
         
         <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
