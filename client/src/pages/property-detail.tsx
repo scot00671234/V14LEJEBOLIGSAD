@@ -317,7 +317,7 @@ export default function PropertyDetail() {
                       <Button 
                         onClick={handleSendMessage}
                         disabled={!message.trim() || sendMessageMutation.isPending}
-                        className="w-full bg-danish-blue hover:bg-blue-700"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium"
                       >
                         <MessageCircle className="h-4 w-4 mr-2" />
                         {sendMessageMutation.isPending ? 'Sender...' : 'Send besked'}
@@ -331,7 +331,7 @@ export default function PropertyDetail() {
                 <div className="text-center py-4">
                   <p className="text-gray-600 mb-4">Log ind for at kontakte udlejeren</p>
                   <Link href="/login">
-                    <Button className="bg-danish-blue hover:bg-blue-700">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium">
                       Log ind
                     </Button>
                   </Link>
