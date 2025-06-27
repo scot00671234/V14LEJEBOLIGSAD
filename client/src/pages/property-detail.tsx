@@ -74,10 +74,12 @@ export default function PropertyDetail() {
 
   const sendMessageMutation = useMutation({
     mutationFn: async (messageData: { recipientId: number; message: string; propertyId: number }) => {
+      const token = localStorage.getItem('auth_token');
       const response = await fetch('/api/messages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
           toUserId: messageData.recipientId,
