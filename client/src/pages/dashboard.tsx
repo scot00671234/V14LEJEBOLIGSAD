@@ -149,6 +149,7 @@ export default function Dashboard() {
 
   const startEdit = (property: Property) => {
     setEditingProperty(property);
+    setActiveTab('create'); // Switch to the create/edit tab
     form.reset({
       title: property.title,
       description: property.description,
