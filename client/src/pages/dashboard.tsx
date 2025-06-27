@@ -454,9 +454,14 @@ export default function Dashboard() {
                   <Button 
                     type="submit"
                     disabled={createPropertyMutation.isPending || updatePropertyMutation.isPending}
-                    className="bg-danish-blue hover:bg-blue-700"
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2"
                   >
-                    {editingProperty ? 'Opdater bolig' : 'Opret bolig'}
+                    {createPropertyMutation.isPending || updatePropertyMutation.isPending 
+                      ? 'Behandler...' 
+                      : editingProperty 
+                        ? 'Opdater bolig' 
+                        : 'Publicer bolig'
+                    }
                   </Button>
                   
                   {editingProperty && (
